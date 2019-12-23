@@ -1,0 +1,6 @@
+splunk_hec_token=***********
+splunk_hec_host=*********
+splunk_hec_index=test
+select_namespace=/var/log/containers/**_qa_**.log,/var/log/containers/**_dev_**.log
+multi_line_namespace=tail.containers.var.log.containers.*dev*.log
+regex=/path\:/
