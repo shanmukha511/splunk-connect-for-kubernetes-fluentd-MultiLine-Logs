@@ -95,12 +95,12 @@ data:
       </entry>
     </source>
   monit.conf: |-
-    <source>
-      @id fluentd-monitor-agent
-      @type monitor_agent
-      @label @SPLUNK
-      tag monitor_agent
-    </source>
+    #<source>
+      #@id fluentd-monitor-agent
+      #@type monitor_agent
+      #@label @SPLUNK
+      #tag monitor_agent
+    #</source>
   output.conf: |-
     <label @SPLUNK>
       # = filters for container logs =
@@ -204,10 +204,11 @@ data:
       </filter>
       # = filters for non-container log files =
       # = filters for monitor agent =
-      <filter monitor_agent>
-        @type jq_transformer
-        jq ".record.source = \"namespace:#{ENV['MY_NAMESPACE']}/pod:#{ENV['MY_POD_NAME']}\" | .record.sourcetype = \"fluentd:monitor-agent\" | .record"
-      </filter>
+      #<filter monitor_agent>
+        #@type jq_transformer
+        #jq ".record.source = \"namespace:#{ENV['MY_NAMESPACE']}/pod:#{ENV['MY_POD_NAME']}\" | .record.sourcetype = \"fluentd:monitor-agent\" | .record"
+      #</filter>
+      
       <match **kube-system**.log>
         @type null
       </match>
